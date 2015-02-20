@@ -1,0 +1,28 @@
+{
+  "name": "md-vanilla-sidenotes",
+  "version": "0.0.1",
+  "homepage": "https://github.com/0gust1/md-vanilla-sidenotes",
+  "authors": [
+    "0gust1 <augustin.chassine@gmail.com>"
+  ],
+  "description": "A front-end micro module to insert (markdown) footnotes as sidenotes, alongside the original content.",
+  "main": "index.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "markdown",
+    "sidenotes",
+    "footnotes",
+    "responsive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
