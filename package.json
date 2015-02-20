@@ -1,0 +1,26 @@
+{
+  "name": "md-vanilla-sidenotes",
+  "version": "0.0.1",
+  "description": "A front-end micro module to manage (markdown) footnotes as sidenotes ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0gust1/md-vanilla-sidenotes.git"
+  },
+  "keywords": [
+    "browser",
+    "sidenotes",
+    "markdown",
+    "footnotes",
+    "multi-markdown"
+  ],
+  "author": "0gust1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0gust1/md-vanilla-sidenotes/issues"
+  },
+  "homepage": "https://github.com/0gust1/md-vanilla-sidenotes"
+}
