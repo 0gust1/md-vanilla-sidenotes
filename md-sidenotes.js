@@ -10,15 +10,15 @@
 
 
 /**
-* Gather footnotes and build an array of "sidenotes" ready to be inserted in DOM ?
-* Not used ATM
-* @param  {String} selector for the container to processfootnotes
-*/
+ * Gather footnotes and build an array of "sidenotes" ready to be inserted in DOM ?
+ * Not used ATM
+ * @param  {String} selector for the container to processfootnotes
+ */
 var processFootNotesToSideNotes = function processFootNotesToSideNotes(rootSel){
 
     var footNotes = document.querySelectorAll(rootSel+' .footnotes ol li'),
-    sidenotes     = [],
-    i             = 1; //Note numbering
+        sidenotes     = [],
+        i             = 1; //Note numbering
 
     //Each footnote
     Array.prototype.forEach.call(footNotes,function(note){
@@ -99,6 +99,7 @@ var processFootNotes = function processFootNotes(rootSel){
     Array.prototype.forEach.call(footNotes,function(note){
         //console.log('test');
         //var docFragment = document.createDocumentFragment();
+        //
 
         var noteNode = document.createElement('aside');
         var id = note.id.replace('fn:','');
@@ -129,12 +130,43 @@ var processFootNotes = function processFootNotes(rootSel){
         //anchorParent.insertBefore(noteNode, anchor.nextSibling);
 
         /* small screens */
-        //no need for JS, just hide the sidenotes and show th footnotes via media queries
+        //no need for JS DOM manipulation, just hide the sidenotes and show th footnotes via media queries
 
         i++;
     });
 
 };
+
+var initialize = function initialize(options){
+
+    var opts = options || {
+        rootSel:"",
+        footNotesContainerSel:"",
+        footNotesSel:"",
+        footNoteIdPattern:"",
+        footNoteAnchorPattern:"",
+        sideNoteClass:"",
+        largeMediaQuery:"",
+        mediumMediaQuery:"",
+        smallMediaQuery:""
+    }
+
+    var notes = processFootNotesToSideNotes();
+
+    //
+
+    if (window.matchMedia(largeMediaQuery).matches) {
+        //the viewport is "large" : sidenotes
+
+    } else if (window.matchMedia(mediumMediaQuery).matches){
+        //the viewport is "medium" : infocards
+
+    } else if (window.matchMedia(smallMediaQuery).matches){
+        //the viewport is "small" : footnotes
+
+    }
+}
+
 
 //module.exports = processFootNotes;
 
