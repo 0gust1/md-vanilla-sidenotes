@@ -103,7 +103,7 @@ var processFootNotes = function processFootNotes(rootSel){
         var noteNode = document.createElement('aside');
         var id = note.id.replace('fn:','');
         //noteNode.id = id;
-        noteNode.classList.add('footnote');
+        noteNode.classList.add('sidenote');
         noteNode.setAttribute('data-ref',i);
 
         //Append footnote childrens to the sidenote
