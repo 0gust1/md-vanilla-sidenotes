@@ -22,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/0gust1/md-vanilla-sidenotes/issues"
   },
-  "homepage": "https://github.com/0gust1/md-vanilla-sidenotes"
+  "homepage": "https://github.com/0gust1/md-vanilla-sidenotes",
+  "devDependencies": {
+    "connect-livereload": "^0.5.3",
+    "express": "^4.12.2",
+    "gulp": "^3.8.11",
+    "gulp-watch": "^4.1.1",
+    "tiny-lr": "^0.1.5"
+  }
 }
