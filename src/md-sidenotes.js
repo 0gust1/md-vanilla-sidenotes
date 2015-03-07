@@ -26,7 +26,7 @@ var processFootNotesToSideNotes = function processFootNotesToSideNotes(opts){
         //var docFragment = document.createDocumentFragment();
 
         var noteNode = document.createElement('aside');
-        var id = note.id.replace('fn:','');
+        var id = note.id.replace(footNoteIdPattern,'');
         noteNode.classList.add('sidenote');
         noteNode.setAttribute('data-ref',i);
 
@@ -53,8 +53,8 @@ var initialize = function initialize(options){
         rootSel:'.wrapper',
         footNotesContainerSel:'.footnotes',
         footNotesSel:'ol li',
-        footNoteIdPattern:'',
-        footNoteAnchorPattern:'',
+        footNoteIdPattern:'fn:',
+        footNoteAnchorPattern:'fnref:',
         sideNoteClass:'sidenote',
         largeMediaQuery:'(min-width: 800px)',
         mediumMediaQuery:'(max-width: 800px)',
@@ -96,7 +96,7 @@ var initialize = function initialize(options){
         //place sidenotes into the DOM, just before their anchor ref.
         //remove any previously rendered infocards and/or hide original footnotes
         sidenotes.forEach(function(note){
-            var anchor = document.getElementById('fnref:'+note.id);
+            var anchor = document.getElementById(footNoteAnchorPattern+note.id);
             //get the global container
             var container = anchor.parentElement.parentElement;
             /* big screens */
@@ -112,7 +112,7 @@ var initialize = function initialize(options){
         //place sidenotes into the DOM, just after their anchor ref.
         //remove any previously rendered sidenotes and/or hide original footnotes
         sidenotes.forEach(function(note){
-            var anchor = document.getElementById('fnref:'+note.id);
+            var anchor = document.getElementById(footNoteAnchorPattern+note.id);
             //get the global container
             var container = anchor.parentElement.parentElement;
             /* medium screens */
