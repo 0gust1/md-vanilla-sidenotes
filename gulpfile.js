@@ -37,6 +37,3 @@ gulp.task('default', function() {
     gulp.watch(['*.html', 'test/styles/**/*.css', 'src/**/*.js'], {cwd: 'test'}, notifyLivereload);
 });
 
-gulp.task('build',function(){
-    console.log('build task');
-});

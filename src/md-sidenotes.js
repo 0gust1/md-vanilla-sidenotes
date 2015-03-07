@@ -10,11 +10,12 @@
 
 
 /**
- * Gather footnotes and build an array of "sidenotes" ready to be inserted in DOM ?
+ * Gather footnotes and build an array of 'sidenotes' ready to be inserted in DOM ?
  * Not used ATM
  * @param  {String} selector for the container to processfootnotes
  */
 var processFootNotesToSideNotes = function processFootNotesToSideNotes(opts){
+    'use strict';
     var selector = opts.rootSel+' '+opts.footNotesContainerSel+' '+opts.footNotesSel;
     var footNotes = document.querySelectorAll(selector),
         sidenotes     = [],
@@ -47,18 +48,18 @@ var processFootNotesToSideNotes = function processFootNotesToSideNotes(opts){
 
 
 var initialize = function initialize(options){
-
+    'use strict';
     var opts = options || {
-        rootSel:".wrapper",
-        footNotesContainerSel:".footnotes",
-        footNotesSel:"ol li",
-        footNoteIdPattern:"",
-        footNoteAnchorPattern:"",
-        sideNoteClass:"sidenote",
-        largeMediaQuery:"(min-width: 800px)",
-        mediumMediaQuery:"(max-width: 800px)",
-        smallMediaQuery:""
-    }
+        rootSel:'.wrapper',
+        footNotesContainerSel:'.footnotes',
+        footNotesSel:'ol li',
+        footNoteIdPattern:'',
+        footNoteAnchorPattern:'',
+        sideNoteClass:'sidenote',
+        largeMediaQuery:'(min-width: 800px)',
+        mediumMediaQuery:'(max-width: 800px)',
+        smallMediaQuery:''
+    };
 
     var notes = processFootNotesToSideNotes(opts);
     console.dir(notes);
@@ -76,20 +77,20 @@ var initialize = function initialize(options){
 
     function renderSideNotesL(mql, notes){
         if (mql.matches) {
-            console.log("large !");
+            console.log('large !');
             renderSideNotesLarge(notes);
         }
     }
 
     function renderSideNotesM(mql, notes){
         if (mql.matches) {
-            console.log("medium !");
+            console.log('medium !');
             renderSideNotesMedium(notes);
         }
     }
 
     /**
-     *Render sidenotes for large screens : "Sidenotes"
+     *Render sidenotes for large screens : 'Sidenotes'
      */
     var renderSideNotesLarge = function renderSideNotesLarge(sidenotes){
         //place sidenotes into the DOM, just before their anchor ref.
@@ -105,7 +106,7 @@ var initialize = function initialize(options){
     };
 
     /**
-     *Render sidenotes for medium screens : "InfoCards"
+     *Render sidenotes for medium screens : 'InfoCards'
      */
     var renderSideNotesMedium = function renderSideNotesMedium(sidenotes){
         //place sidenotes into the DOM, just after their anchor ref.
@@ -120,7 +121,7 @@ var initialize = function initialize(options){
         });
     };
 
-}
+};
 
 //module.exports = processFootNotes;
 

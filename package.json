@@ -4,7 +4,10 @@
   "description": "A front-end micro module to manage (markdown) footnotes as sidenotes ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jshint": "jshint src/",
+    "uglify": "uglifyjs src/md-sidenotes.js --output md-sidenotes.min.js --compress --mangle --lint --verbose",
+    "build": "npm run jshint && npm run uglify"
   },
   "repository": {
     "type": "git",
@@ -28,6 +31,7 @@
     "express": "^4.12.2",
     "gulp": "^3.8.11",
     "gulp-watch": "^4.1.1",
-    "tiny-lr": "^0.1.5"
+    "tiny-lr": "^0.1.5",
+    "uglify-js": "^2.4.16"
   }
 }
