@@ -4,6 +4,8 @@
 
 **A front-end micro module to manage (eventually markdown generated) footnotes as sidenotes. In a responsive way.**
 
+You can see a quick demo here : <http://0gust1.github.io/md-vanilla-sidenotes/test/>
+
 
 ### Inspiration :
 
