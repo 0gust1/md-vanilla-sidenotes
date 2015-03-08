@@ -1,32 +1,35 @@
 # md-vanilla-sidenotes
 
-A front-end micro module to insert (markdown) footnotes as sidenotes, alongside the original content.
+## What ?
 
-## Inspiration :
+**A front-end micro module to manage (eventually markdown generated) footnotes as sidenotes. In a responsive way.**
+
+
+### Inspiration :
 
 **Behavior :** inspired by <https://github.com/acdlite/jquery.sidenotes>, but with less functionnalities and without the jQuery dependency.
 
 **UX :** <https://medium.com/de-correspondent/links-are-broken-these-three-alternatives-have-improved-our-readers-reading-experience-796c302c8930>
 
-## What ?
+Starting point, see : https://gist.github.com/0gust1/260638bd34a434e7f3dd
 
-Work in progress, see : https://gist.github.com/0gust1/260638bd34a434e7f3dd
+## How
 
-ATM : the code is starting to work.
+Beware, work in progress :-)
 
 Call `initialize(options)`, where `options` is like :
 
-```
+```javascript
     {
-        rootSel:".wrapper",
-        footNotesContainerSel:".footnotes",
-        footNotesSel:"ol li",
-        footNoteIdPattern:"",
-        footNoteAnchorPattern:"",
-        sideNoteClass:"sidenote",
-        largeMediaQuery:"(min-width: 800px)",
-        mediumMediaQuery:"(max-width: 800px)",
-        smallMediaQuery:""
+        rootSel:'.wrapper', //rootWrapper for your content
+        footNotesContainerSel:'.footnotes', //base container for the footnotes to transform into sidenotes
+        footNotesSel:'ol li', //selector for the footnotes
+        footNoteIdPattern:'fn:', //existing footNotes ID prefix
+        footNoteAnchorPattern:'fnref:', //ID prefix for the anchors in the main content, linking to notes.
+        sideNoteClass:'sidenote', //optional : this class will be used for the generated sidenotes
+        largeMediaQuery:'(min-width: 800px)', //Media query to trigger the behavior for ‘large’ screens
+        mediumMediaQuery:'(max-width: 800px)', //Media query to trigger the behavior for ‘medium’ screens
+        smallMediaQuery:'' //Media query to trigger the behavior for ‘small’ screens
     }
 
 ```
