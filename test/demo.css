@@ -1,0 +1,43 @@
+body{
+  background-color:#4B4D5E;
+}
+
+h1{color:#B9B1A8;}
+
+.wrapper{
+width: 80%;
+max-width: 75em;
+padding: 0 20% 0 10%;
+margin: 0 auto;
+padding-top: 10em;  background-color:#FFF2E7;
+  color:#4B4D5E;
+}
+
+.sidenote{
+    background-color:#D0CABF;
+    color:#4B4D5E;
+    padding:1em;
+    /*color:#D0CABF;*/
+    font-size: 0.85rem;
+    margin:1rem 0 1rem 1rem;
+}
+
+.sidenote p{
+  margin-bottom:0.6em;
+}
+
+@media screen and (max-width: 800px){
+    .sidenote{
+    
+    }
+}
+
+@media screen and (min-width: 800px){
+    .sidenote{
+float: right;
+margin-right: -40%;
+width: 38%;    }
+}
+
+
+

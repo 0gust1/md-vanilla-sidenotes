@@ -26,7 +26,7 @@ var processFootNotesToSideNotes = function processFootNotesToSideNotes(opts){
         //var docFragment = document.createDocumentFragment();
 
         var noteNode = document.createElement('aside');
-        var id = note.id.replace(footNoteIdPattern,'');
+        var id = note.id.replace(opts.footNoteIdPattern,'');
         noteNode.classList.add('sidenote');
         noteNode.setAttribute('data-ref',i);
 
@@ -61,13 +61,55 @@ var initialize = function initialize(options){
         smallMediaQuery:''
     };
 
+
+    /**
+     *Render sidenotes for large screens : 'Sidenotes'
+     */
+    var renderSideNotesLarge = function renderSideNotesLarge(sidenotes){
+        //place sidenotes into the DOM, just before their anchor ref.
+        //remove any previously rendered infocards and/or hide original footnotes
+        sidenotes.forEach(function(note){
+            var anchor = document.getElementById(opts.footNoteAnchorPattern+note.id);
+            //get the global container
+            var container = anchor.parentElement.parentElement;
+            /* big screens */
+            //in the container, insert the note before the anchor parent
+            container.insertBefore(note.node, anchor.parentElement);
+        });
+    };
+
+    /**
+     *Render sidenotes for medium screens : 'InfoCards'
+     */
+    var renderSideNotesMedium = function renderSideNotesMedium(sidenotes){
+        //place sidenotes into the DOM, just after their anchor ref.
+        //remove any previously rendered sidenotes and/or hide original footnotes
+        sidenotes.forEach(function(note){
+            var anchor = document.getElementById(opts.footNoteAnchorPattern+note.id);
+            //get the global container
+            var container = anchor.parentElement.parentElement;
+            /* medium screens */
+            //in the container, insert the note before the next sibling of the anchor parent
+            container.insertBefore(note.node, anchor.parentElement.nextSibling);
+        });
+    };
+
+
     var notes = processFootNotesToSideNotes(opts);
     console.dir(notes);
+
+
     //
     var mqlLarge = window.matchMedia(opts.largeMediaQuery);
     mqlLarge.addListener(function(mql){
         renderSideNotesL(mql,notes);
     });
+
+    if(mqlLarge.matches){
+        renderSideNotesLarge(notes);
+    }else{
+        renderSideNotesMedium(notes);
+    }
 
     ////
     var mqlMedium = window.matchMedia(opts.mediumMediaQuery);
@@ -89,37 +131,6 @@ var initialize = function initialize(options){
         }
     }
 
-    /**
-     *Render sidenotes for large screens : 'Sidenotes'
-     */
-    var renderSideNotesLarge = function renderSideNotesLarge(sidenotes){
-        //place sidenotes into the DOM, just before their anchor ref.
-        //remove any previously rendered infocards and/or hide original footnotes
-        sidenotes.forEach(function(note){
-            var anchor = document.getElementById(footNoteAnchorPattern+note.id);
-            //get the global container
-            var container = anchor.parentElement.parentElement;
-            /* big screens */
-            //in the container, insert the note before the anchor parent
-            container.insertBefore(note.node, anchor.parentElement);
-        });
-    };
-
-    /**
-     *Render sidenotes for medium screens : 'InfoCards'
-     */
-    var renderSideNotesMedium = function renderSideNotesMedium(sidenotes){
-        //place sidenotes into the DOM, just after their anchor ref.
-        //remove any previously rendered sidenotes and/or hide original footnotes
-        sidenotes.forEach(function(note){
-            var anchor = document.getElementById(footNoteAnchorPattern+note.id);
-            //get the global container
-            var container = anchor.parentElement.parentElement;
-            /* medium screens */
-            //in the container, insert the note before the next sibling of the anchor parent
-            container.insertBefore(note.node, anchor.parentElement.nextSibling);
-        });
-    };
 
 };
 
