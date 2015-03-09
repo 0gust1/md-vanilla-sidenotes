@@ -34,6 +34,6 @@ function notifyLivereload(event) {
 gulp.task('default', function() {
     startExpress();
     startLivereload();
-    gulp.watch(['*.html', 'test/styles/**/*.css', 'src/**/*.js'], {cwd: 'test'}, notifyLivereload);
+    gulp.watch(['*.html', 'demo/styles/**/*.css', 'src/**/*.js'], {cwd: 'demo'}, notifyLivereload);
 });
 
