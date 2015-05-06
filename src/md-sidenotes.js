@@ -33,6 +33,7 @@ var processFootNotesToSideNotes = function processFootNotesToSideNotes(opts){
         //Append footnote childrens to the sidenote
         Array.prototype.forEach.call(note.childNodes,function(noteChild){
             noteNode.appendChild(noteChild.cloneNode(true));
+            //note.removeChild(noteChild);
         });
 
         var sidenote = {};
@@ -41,6 +42,15 @@ var processFootNotesToSideNotes = function processFootNotesToSideNotes(opts){
         sidenote.num = i;
         sidenotes.push(sidenote);
         i++;
+
+        //remove the original footnote
+        note.parentNode.removeChild(note);
+    });
+
+    //remove the footNotes container
+    var footNotesConts = document.querySelectorAll(opts.rootSel+' '+opts.footNotesContainerSel);
+    Array.prototype.forEach.call(footNotesConts,function(footNoteCont){
+        footNoteCont.parentNode.removeChild(footNoteCont);
     });
 
     return sidenotes;
